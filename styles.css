@@ -1,0 +1,63 @@
+/* general styles */
+
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+/* style current player headline */
+
+.headlines {
+    display: flex;
+    justify-content: center;
+}
+
+.images-header {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    margin-left: 16px;
+}
+.headlines > h1 {
+    display: flex;
+    align-items: center;
+    margin: 16px;
+}
+
+/* center the game field */
+
+.center-the-game {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* style the game field */
+
+.row {
+    display: flex;
+}
+.caskets {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    border: 1px solid black;
+}
+
+/* underlines the active player! */
+
+.underlined { 
+    text-decoration: underline;
+}
+
+/* set cross or circle img */
+
+.set-icon-img {
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+}
