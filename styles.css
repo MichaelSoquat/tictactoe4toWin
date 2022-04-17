@@ -12,6 +12,9 @@ body {
     align-items: center;
     justify-content: center;
     height: 100%;
+    background-image: url(./img/man-silhouette-walking-person-cloud-people-674034-pxhere.com.jpg);
+    background-position: center;
+    background-size: cover;
 }
 /* style current player headline */
 
@@ -54,6 +57,10 @@ body {
     height: 35px;
     width: 35px;
     border: 1px solid black;
+}
+
+.caskets:hover {
+    cursor: pointer;
 }
 
 /* underlines the active player! */
