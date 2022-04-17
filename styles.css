@@ -3,8 +3,16 @@
 body {
     margin: 0;
     height: 100vh;
+    max-height: 100%;
 }
 
+.max-height {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
 /* style current player headline */
 
 .headlines {
@@ -50,7 +58,7 @@ body {
 
 /* underlines the active player! */
 
-.underlined { 
+.underlined {
     text-decoration: underline;
 }
 
@@ -60,4 +68,11 @@ body {
     height: 30px;
     width: 30px;
     object-fit: cover;
+}
+
+@media (max-width: 400px) {
+    .headlines {
+        flex-direction: column;
+        align-items: center;
+    }
 }
