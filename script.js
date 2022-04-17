@@ -165,7 +165,8 @@ function checkDiagonal() {
 function checkIfsetIconPossible() {
     let number = parseInt(this.id);
     console.log(this.id)
-    return this.id == 30 || this.id == 31 || this.id == 32 || this.id == 33 || this.id == 34 || this.id == 35
-        || player1Caskets.includes((number + 6)) || player2Caskets.includes((number + 6))
+    return (this.id == 30 || this.id == 31 || this.id == 32 || this.id == 33 || this.id == 34 || this.id == 35
+        || player1Caskets.includes((number + 6)) || player2Caskets.includes((number + 6))) && !player1Caskets.includes(number) &&
+        !player2Caskets.includes(number)
 }
 
