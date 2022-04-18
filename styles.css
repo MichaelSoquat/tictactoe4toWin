@@ -16,6 +16,8 @@ body {
     background-position: center;
     background-size: cover;
 }
+
+
 /* style current player headline */
 
 .headlines {
@@ -29,27 +31,23 @@ body {
     object-fit: cover;
     margin-left: 16px;
 }
-.headlines > h1 {
+
+.headlines>h1 {
     display: flex;
     align-items: center;
-    margin: 16px;
+    margin-bottom: 16px;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 0;
 }
 
-/* center the game field */
-
-.center-the-game {
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
 /* style the game field */
 
 .row {
     display: flex;
 }
+
 .caskets {
     display: flex;
     align-items: center;
@@ -63,11 +61,13 @@ body {
     cursor: pointer;
 }
 
+
 /* underlines the active player! */
 
 .underlined {
     text-decoration: underline;
 }
+
 
 /* set cross or circle img */
 
@@ -75,6 +75,39 @@ body {
     height: 30px;
     width: 30px;
     object-fit: cover;
+    animation: animate 0.5s ease;
+}
+
+@keyframes animate {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.winner-icons {
+    background-color: deepskyblue;
+    transition: 1s ease-in-out;
+}
+
+.winner {
+    animation: rotate 1s linear;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(180deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
 }
 
 @media (max-width: 400px) {

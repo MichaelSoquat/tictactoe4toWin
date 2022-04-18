@@ -8,6 +8,8 @@ let playerActiveImg;
 let player1Caskets = [];
 let player2Caskets = [];
 let id;
+let gameWon = false;
+let playerWon;
 let filteredNumbers = [];
 const rows = [
     [0, 1, 2, 3, 4, 5],
@@ -60,13 +62,13 @@ function setPlayerActiveAtStart() {
 function changeActivePlayer() {
     if (playerActive == player1) {
         pushToPlayer1();
-        checkWinGame();
+        checkWinGame(player1Caskets);
         playerActive = player2;
         playerNotActive = player1;
         playerActiveImg = document.getElementById('player2Img').src;
     } else {
         pushToPlayer2();
-        checkWinGame();
+        checkWinGame(player2Caskets);
         playerActive = player1;
         playerNotActive = player2;
         playerActiveImg = document.getElementById('player1Img').src;
@@ -115,49 +117,64 @@ function pushToPlayer2() {
 
 // check if a player has won the game, always checks rows,columns and diagonals
 
-function checkWinGame() {
-    checkRows();
-    checkColumns();
-    checkDiagonal();
+function checkWinGame(player) {
+    checkRows(player);
+    checkColumns(player);
+    checkDiagonal(player);
 }
 
-function checkRows() {
+function checkRows(player) {
     for (let i = 0; i < rows.length; i++) {
-        filteredNumbers = player1Caskets.filter((number) => {
+        filteredNumbers = player.filter((number) => {
             return rows[i].includes(number)
         })
         if (filteredNumbers.length >= 4 && (filteredNumbers[3] - filteredNumbers[0] <= 3)) {
-            let playerWon = playerActive
+            playerWon = playerActive;
             console.log('game won from', playerWon)
+            gameWon = true;
+            animateWinnerIcons();
         }
-
     }
 }
 
-function checkColumns() {
+function checkColumns(player) {
     for (let i = 0; i < columns.length; i++) {
-        filteredNumbers = player1Caskets.filter((number) => {
+        filteredNumbers = player.filter((number) => {
             return columns[i].includes(number)
         })
         if (filteredNumbers.length >= 4 && (filteredNumbers[3] - filteredNumbers[0] <= 18)) {
-            let playerWon = playerActive
-            console.log('game won from', playerWon)
+            playerWon = playerActive;
+            console.log('game won from', playerWon);
+            gameWon = true;
+            animateWinnerIcons();
         }
 
     }
 }
 
-function checkDiagonal() {
+function checkDiagonal(player) {
     for (let i = 0; i < diagonal.length; i++) {
-        filteredNumbers = player1Caskets.filter((number) => {
+        filteredNumbers = player.filter((number) => {
             return diagonal[i].includes(number)
         })
         if (filteredNumbers.length >= 4 && (filteredNumbers[3] - filteredNumbers[0] <= 15)) {
-            let playerWon = playerActive
-            console.log('game won from', playerWon)
+            playerWon = playerActive;
+            console.log('game won from', playerWon);
+            gameWon = true;
+            animateWinnerIcons();
         }
 
     }
+}
+
+function animateWinnerIcons() {
+
+    document.getElementById(filteredNumbers[0]).classList.add('winner-icons');
+    document.getElementById(filteredNumbers[1]).classList.add('winner-icons');
+    document.getElementById(filteredNumbers[2]).classList.add('winner-icons');
+    document.getElementById(filteredNumbers[3]).classList.add('winner-icons');
+    playerWon.classList.add('winner')
+
 }
 
 // Set Icon is only possible in lowest row or if an icon underneath is there!
@@ -165,8 +182,7 @@ function checkDiagonal() {
 function checkIfsetIconPossible() {
     let number = parseInt(this.id);
     console.log(this.id)
-    return (this.id == 30 || this.id == 31 || this.id == 32 || this.id == 33 || this.id == 34 || this.id == 35
-        || player1Caskets.includes((number + 6)) || player2Caskets.includes((number + 6))) && !player1Caskets.includes(number) &&
-        !player2Caskets.includes(number)
+    return (this.id == 30 || this.id == 31 || this.id == 32 || this.id == 33 || this.id == 34 || this.id == 35 ||
+            player1Caskets.includes((number + 6)) || player2Caskets.includes((number + 6))) && !player1Caskets.includes(number) &&
+        !player2Caskets.includes(number) && !gameWon
 }
-
