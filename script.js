@@ -12,6 +12,8 @@ let gameWon = false;
 let playerWon;
 let filteredNumbers = [];
 let endOfGame = false;
+let countPlayer1 = 0;
+let countPlayer2 = 0;
 const rows = [
     [0, 1, 2, 3, 4, 5],
     [6, 7, 8, 9, 10, 11],
@@ -44,10 +46,19 @@ const diagonal = [
 // onload
 
 function render() {
+    getCount();
     setPlayerActiveAtStart();
     underlineActivePlayer();
 }
 
+function getCount() {
+    count1 = sessionStorage.getItem('player1');
+    count2 = sessionStorage.getItem('player2');
+    if (count1 && count2) {
+        countPlayer1 = JSON.parse(count1)
+        countPlayer2 = JSON.parse(count2)
+    }
+}
 // first Player
 
 function setPlayerActiveAtStart() {
@@ -206,9 +217,22 @@ function showEndscreen() {
         winner.classList.add('winner-animation')
         button.classList.add('button-animation')
         winner.innerText = `${playerWon.id.replace('p','P')} won the game!`;
+        console.log(playerWon.id)
+        saveInSessionStorage();
     }, 1500)
 }
 
+function saveInSessionStorage() {
+    if (playerWon.id == 'player1') {
+        countPlayer1++;
+    } else {
+        countPlayer2++;
+    }
+    let count1 = JSON.stringify(countPlayer1);
+    sessionStorage.setItem('player1', count1);
+    let count2 = JSON.stringify(countPlayer2)
+    sessionStorage.setItem('player2', count2);
+}
 // restart game
 
 function restartGame() {
