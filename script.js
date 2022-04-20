@@ -189,6 +189,8 @@ function checkIfsetIconPossible() {
         !player2Caskets.includes(number) && !gameWon
 }
 
+// endscreen
+
 function showEndscreen() {
     let gamefield = document.getElementById('gamefield');
     let endscreen = document.getElementById('end-screen');
@@ -199,8 +201,10 @@ function showEndscreen() {
         players.classList.add('d-none')
         endscreen.classList.remove('d-none');
         winner.innerText = `${playerWon.id.replace('p','P')} won the game!`;
-    }, 1100)
+    }, 1500)
 }
+
+// restart game
 
 function restartGame() {
     location.reload();
