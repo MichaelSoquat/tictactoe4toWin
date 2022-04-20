@@ -193,8 +193,10 @@ function showEndscreen() {
     let gamefield = document.getElementById('gamefield');
     let endscreen = document.getElementById('end-screen');
     let winner = document.getElementById('winner');
+    let players = document.getElementById('players')
     setTimeout(() => {
         gamefield.classList.add('d-none');
+        players.classList.add('d-none')
         endscreen.classList.remove('d-none');
         winner.innerText = `${playerWon.id.replace('p','P')} won the game!`;
     }, 1100)
