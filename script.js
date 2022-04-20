@@ -80,8 +80,10 @@ function changeActivePlayer() {
 // always underline the active player
 
 function underlineActivePlayer() {
-    playerActive.classList.add('underlined');
-    playerNotActive.classList.remove('underlined');
+    if (!gameWon) {
+        playerActive.classList.add('underlined');
+        playerNotActive.classList.remove('underlined');
+    }
 };
 // set icon but only if its possible, please check changeActivePlayer - function!
 function setIcon(id) {
