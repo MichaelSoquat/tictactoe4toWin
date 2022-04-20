@@ -11,6 +11,7 @@ let id;
 let gameWon = false;
 let playerWon;
 let filteredNumbers = [];
+let endOfGame = false;
 const rows = [
     [0, 1, 2, 3, 4, 5],
     [6, 7, 8, 9, 10, 11],
@@ -174,6 +175,7 @@ function animateWinnerIcons() {
     document.getElementById(filteredNumbers[2]).classList.add('winner-icons');
     document.getElementById(filteredNumbers[3]).classList.add('winner-icons');
     playerWon.classList.add('winner')
+    showEndscreen();
 
 }
 
@@ -185,4 +187,19 @@ function checkIfsetIconPossible() {
     return (this.id == 30 || this.id == 31 || this.id == 32 || this.id == 33 || this.id == 34 || this.id == 35 ||
             player1Caskets.includes((number + 6)) || player2Caskets.includes((number + 6))) && !player1Caskets.includes(number) &&
         !player2Caskets.includes(number) && !gameWon
+}
+
+function showEndscreen() {
+    let gamefield = document.getElementById('gamefield');
+    let endscreen = document.getElementById('end-screen');
+    let winner = document.getElementById('winner');
+    setTimeout(() => {
+        gamefield.classList.add('d-none');
+        endscreen.classList.remove('d-none');
+        winner.innerText = `${playerWon.id.replace('p','P')} won the game!`;
+    }, 1100)
+}
+
+function restartGame() {
+    location.reload();
 }

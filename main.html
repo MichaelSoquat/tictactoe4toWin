@@ -13,7 +13,8 @@
 </head>
 
 <body onload="render()">
-    <div class="max-height">
+
+    <div class=" max-height">
         <!-- Headlines -->
 
         <header class="headlines">
@@ -23,7 +24,12 @@
 
 
         <!-- Gamefield -->
-        <div>
+        <div id="end-screen" class="d-none end-screen">
+            <span id="winner">Player won!</span>
+            <a class="push_button blue" onclick="restartGame()">Restart game</a>
+        </div>
+        <div id="gamefield">
+
             <div id=" row1 " class="row ">
                 <div onclick="setIcon(id) " class="caskets " id="0"></div>
                 <div onclick="setIcon(id) " class="caskets " id="1"></div>
