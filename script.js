@@ -8,6 +8,7 @@ let playerActiveImg;
 let player1Caskets = [];
 let player2Caskets = [];
 let id;
+let startNewGame;
 let gameWon = false;
 let playerWon;
 let filteredNumbers = [];
@@ -51,6 +52,8 @@ function render() {
     underlineActivePlayer();
 }
 
+// load count from session storage
+
 function getCount() {
     count1 = sessionStorage.getItem('player1');
     count2 = sessionStorage.getItem('player2');
@@ -58,6 +61,13 @@ function getCount() {
         countPlayer1 = JSON.parse(count1)
         countPlayer2 = JSON.parse(count2)
     }
+    setScore();
+}
+
+// set the current score
+function setScore() {
+    document.getElementById('countPlayer1').innerHTML += `${countPlayer1}`;
+    document.getElementById('countPlayer2').innerHTML += `${countPlayer2}`;
 }
 // first Player
 
@@ -209,23 +219,24 @@ function showEndscreen() {
     let endscreen = document.getElementById('end-screen');
     let winner = document.getElementById('winner');
     let players = document.getElementById('players');
-    let button = document.getElementById('restart-button')
+    let button = document.getElementById('restart-button');
+    let button2 = document.getElementById('new-game-button');
     setTimeout(() => {
         gamefield.classList.add('d-none');
         players.classList.add('d-none')
         endscreen.classList.remove('d-none');
         winner.classList.add('winner-animation')
         button.classList.add('button-animation')
+        button2.classList.add('button-animation')
         winner.innerText = `${playerWon.id.replace('p','P')} won the game!`;
-        console.log(playerWon.id)
         saveInSessionStorage();
     }, 1500)
 }
 
 function saveInSessionStorage() {
-    if (playerWon.id == 'player1') {
+    if (playerWon.id == 'player1' && !startNewGame) {
         countPlayer1++;
-    } else {
+    } else if (playerWon.id == 'player2' && !startNewGame) {
         countPlayer2++;
     }
     let count1 = JSON.stringify(countPlayer1);
@@ -233,8 +244,17 @@ function saveInSessionStorage() {
     let count2 = JSON.stringify(countPlayer2)
     sessionStorage.setItem('player2', count2);
 }
-// restart game
+// restart game with current score
 
 function restartGame() {
+    location.reload();
+}
+
+// new game scroe 0:0
+function newGame() {
+    startNewGame = true;
+    countPlayer1 = 0;
+    countPlayer2 = 0;
+    saveInSessionStorage();
     location.reload();
 }

@@ -32,13 +32,20 @@ body {
     margin-left: 16px;
 }
 
-.headlines>h1 {
+.headlines>div>h1 {
     display: flex;
     align-items: center;
     margin-bottom: 16px;
     margin-left: 8px;
     margin-right: 8px;
     margin-top: 0;
+}
+
+.count {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 24px;
 }
 
 

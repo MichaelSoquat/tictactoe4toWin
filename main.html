@@ -18,15 +18,22 @@
         <!-- Headlines -->
 
         <header id="players" class="headlines">
-            <h1 id="player1">Player 1<img id="player1Img" class="images-header" src="./img/cross.png"></h1>
-            <h1 id="player2">Player 2<img id="player2Img" class="images-header" src="./img/circle.png"></h1>
+            <div>
+                <h1 id="player1">Player 1<img id="player1Img" class="images-header" src="./img/cross.png"></h1>
+                <span class="count" id="countPlayer1"></span>
+            </div>
+            <div>
+                <h1 id="player2">Player 2<img id="player2Img" class="images-header" src="./img/circle.png"></h1>
+                <span class="count" id="countPlayer2"></span>
+            </div>
         </header>
 
 
         <!-- Gamefield -->
         <div id="end-screen" class="d-none end-screen">
             <span id="winner">Player won!</span>
-            <a id="restart-button" class="push_button blue" onclick="restartGame()">Restart game</a>
+            <a id="restart-button" class="push_button blue" onclick="restartGame()">Next game</a>
+            <a id="new-game-button" class="push_button blue" onclick="newGame()">New game</a>
         </div>
         <div id="gamefield">
 
